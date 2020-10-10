@@ -1,0 +1,81 @@
+<html>
+    <head>
+        <title>Health Questionnaire</title>
+
+        <!-- Compiled and minified CSS -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+        <!-- Compiled and minified JavaScript -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+                
+    </head>
+    <!-- <p>
+        <label>
+          <input type="checkbox" class="filled-in" checked="checked" />
+          <span>Filled in</span>
+        </label>
+      </p> -->
+    <body>
+        <div class="row">
+            <form action = "" method='post' class="col s12">
+                {% csrf_token %}
+                <div class="row">
+                    <div class="input-field col s12"> 
+                        <label>
+                            <input type="checkbox" name="testWithinTenDays" class="filled-in" id="id_testWithinTenDays" onclick="testProof()">
+                            <span for="id_testWithinTenDays">Have you been tested in ten days ?</span>
+                        </label>
+                    </div>
+                </div>
+        
+                <div class="row" id="test_result" style="display: none;">
+                    <div class = "input-field col s12">
+                        <input type="file" name="testproof" id="id_testproof">
+                        <label for="id_testproof">If yes, provide a proof:</label> 
+                    </div>
+                </div>
+                <div class="row">
+                    <div class = "input-field col s12">
+                        <label>
+                        <input type="checkbox" name="beingtoHotSpot" class="filled-in" id="id_beingtoHotSpot">
+                        <span for="id_beingtoHotSpot">Have you been to an area classified as an hotspot in the last 14 days ?</label> 
+                    `   </label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class = "input-field col s12">    
+                        <input type="number" name="age"  required id="id_age">
+                        <label for="id_age">Age:</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class = "input-field col s12">   
+                        <input type="checkbox" name="pregnant" id="id_pregnant" class="filled-in">
+                        <span for="id_pregnant">Are you Pregnant:</span> 
+                    </div>
+                </div>
+                <div class="row">
+                    <div class = "input-field col s12"> 
+                        <label for="id_copd">Have you been diagnosed of COPD (Chronic obstructive pulmonary disease):</label> 
+                        <input type="checkbox" name="copd" id="id_copd">
+                    </div>
+                </div>
+
+                <input type="submit" name="submit">Submit</input>
+            </form>
+        </div>
+    </body>
+
+    <script>
+        function testProof() {
+            var checkBox = document.getElementById("id_testWithinTenDays");
+            var proof = document.getElementById("test_result");
+
+            if (checkBox.checked == true){
+                proof.style.display = 'inherit';
+            } else {
+                proof.style.display = "none";
+            }
+        }
+    </script>
+</html>
